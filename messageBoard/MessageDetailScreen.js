@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 function MessageDetails({ route }) {
     const [comments, setComments] = useState([]);
     const [message, setMessage] = useState(route.params.item);
-    const [userComment, setUserComment] = useState([]);
+    const [userComment, setUserComment] = useState("");
     const random = Math.floor(Math.random() * 1000) + 1;
 
     async function getComments() {
@@ -53,6 +53,7 @@ function MessageDetails({ route }) {
                     "name": "Test User",
                     "email": "testUser@test.com"
                 }))
+            setUserComment("")
         }
     }
     return (
@@ -68,6 +69,7 @@ function MessageDetails({ route }) {
                     placeholder="Place your comment"
                     placeholderTextColor="#841584"
                     onChangeText={(text) => { setUserComment(text) }}
+                    value={userComment}
                 />
                 <TouchableOpacity
                     style={styles.postButton}
